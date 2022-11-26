@@ -6,5 +6,5 @@ import 'package:etiya_assignment/services/network/api_service.dart';
 
 // Service
 final ApiService apiService = ApiService.instance;
-final AssetService assetService = AssetService();
-final CitiesService citiesService = CitiesService();
+final AssetService assetService = AssetService.instance;
+final CitiesService citiesService = CitiesService.instance;

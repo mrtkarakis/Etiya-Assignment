@@ -1,3 +1,4 @@
+import 'package:etiya_assignment/localization/text.dart';
 import 'package:etiya_assignment/pages/homePage/home_view.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Etiya Asiggnment',
+      title: AppText.etiyaAssignment,
       theme: ThemeData(),
       home: const HomePage(),
     );

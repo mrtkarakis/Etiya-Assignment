@@ -2,6 +2,13 @@ import 'dart:async' as async;
 import 'dart:developer' as developer;
 
 class DeveloperService {
+  static DeveloperService? _instace;
+  static DeveloperService get instance {
+    _instace ??= DeveloperService._init();
+    return _instace!;
+  }
+
+  DeveloperService._init();
   static void developerLog(
     String? message, {
     final String name = "developerLog",

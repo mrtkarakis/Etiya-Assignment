@@ -1,6 +1,13 @@
 import 'package:etiya_assignment/global.dart';
 
 class CitiesService {
+  static CitiesService? _instace;
+  static CitiesService get instance {
+    _instace ??= CitiesService._init();
+    return _instace!;
+  }
+
+  CitiesService._init();
   static List<String>? _cities;
   static const String trPath = "assets/cities/tr.json";
 

@@ -10,10 +10,16 @@ class DeveloperService {
     final int? sequenceNumber,
     final StackTrace? stackTrace,
     DateTime? time,
+    DateTime? startTime,
+    DateTime? endTime,
     final async.Zone? zone,
   }) {
     time = time ?? DateTime.now();
-    developer.log("<<time : $time>> $message",
+    Duration? duration = endTime != null && startTime != null
+        ? endTime.difference(startTime)
+        : null;
+    developer.log(
+        "<<time : $time>> ${duration != null ? 'duration: ${duration.inMilliseconds},' : ""} $message",
         name: name,
         error: error,
         level: level,

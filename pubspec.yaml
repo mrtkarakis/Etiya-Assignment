@@ -23,4 +23,9 @@ dev_dependencies:
 
 flutter:
 
+  assets:
+    - assets/cities/
+
   uses-material-design: true
+
+  

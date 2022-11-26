@@ -1,4 +1,5 @@
 import 'package:etiya_assignment/global.dart';
+import 'package:etiya_assignment/localization/text.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,14 +8,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Etiya Assignment")),
+      appBar: AppBar(title: const Text(AppText.etiyaAssignment)),
       body: Column(
         children: [
           ElevatedButton(
               onPressed: () async {
-                await apiService.getCurrrentCity("izmir");
+                await citiesService.getCities();
               },
-              child: Text("get izmir")),
+              child: const Text("get cities")),
           const Center(
             child: Text("ETIYA ASSIGMENTS"),
           ),

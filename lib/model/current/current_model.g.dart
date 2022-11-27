@@ -20,7 +20,7 @@ Current _$CurrentFromJson(Map<String, dynamic> json) => Current(
       windDegree: json['windDegree'] as int?,
       windDir: json['windDir'] as String?,
       pressure: json['pressure'] as int?,
-      precip: json['precip'] as int?,
+      precip: (json['precip'] as num?)?.toDouble(),
       humidity: json['humidity'] as int?,
       cloudcover: json['cloudcover'] as int?,
       feelslike: json['feelslike'] as int?,

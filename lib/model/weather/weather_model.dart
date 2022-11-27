@@ -1,4 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:json_annotation/json_annotation.dart' show JsonSerializable;
 
 import 'package:etiya_assignment/model/current/current_model.dart';
 import 'package:etiya_assignment/model/location/location_model.dart';

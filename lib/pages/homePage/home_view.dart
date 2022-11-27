@@ -1,5 +1,5 @@
-import 'package:etiya_assignment/global.dart';
 import 'package:etiya_assignment/localization/text.dart';
+import 'package:etiya_assignment/services/cities/cities_service.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,10 +12,8 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           ElevatedButton(
-              onPressed: () async {
-                await citiesService.getCities();
-              },
-              child: const Text("get cities")),
+              onPressed: () async {},
+              child: Text(CitiesService.cities?.last ?? "")),
           const Center(
             child: Text("ETIYA ASSIGMENTS"),
           ),

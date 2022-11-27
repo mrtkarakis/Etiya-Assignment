@@ -8,13 +8,13 @@ class CitiesService {
   }
 
   CitiesService._init();
-  static List<String>? _cities;
+  static List<String>? cities;
   static const String trPath = "assets/cities/tr.json";
 
   Future<List<String>> _getCitiesFromAssets() async {
     final Map<String, dynamic> citiesJson =
         await assetService.parseJsonFromAssets(trPath);
-    List<String> cities = citiesJson
+    List<String> result = citiesJson
         .map(
           (key, value) => MapEntry(
             key,
@@ -23,12 +23,12 @@ class CitiesService {
         )
         .values
         .toList();
-    _cities = cities;
+    cities = result;
 
-    return cities;
+    return result;
   }
 
   Future<List<String>> getCities() async {
-    return _cities ?? await _getCitiesFromAssets(); // duration => 0-3 ms
+    return cities ?? await _getCitiesFromAssets(); // duration => 0-3 ms
   }
 }

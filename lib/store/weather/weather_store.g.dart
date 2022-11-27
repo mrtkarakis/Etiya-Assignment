@@ -40,11 +40,11 @@ mixin _$WeatherStore on _WeatherStoreBase, Store {
   }
 
   @override
-  void addAllWeatherCity(List<Weather> weather, {bool clearTo = false}) {
+  void addAllWeatherCity(List<Weather> weatherList, {bool clearTo = false}) {
     final _$actionInfo = _$_WeatherStoreBaseActionController.startAction(
         name: '_WeatherStoreBase.addAllWeatherCity');
     try {
-      return super.addAllWeatherCity(weather, clearTo: clearTo);
+      return super.addAllWeatherCity(weatherList, clearTo: clearTo);
     } finally {
       _$_WeatherStoreBaseActionController.endAction(_$actionInfo);
     }

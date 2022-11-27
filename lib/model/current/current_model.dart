@@ -1,4 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:json_annotation/json_annotation.dart' show JsonSerializable;
 
 part "current_model.g.dart";
 
@@ -13,7 +13,7 @@ class Current {
   int? windDegree;
   String? windDir;
   int? pressure;
-  int? precip;
+  double? precip;
   int? humidity;
   int? cloudcover;
   int? feelslike;

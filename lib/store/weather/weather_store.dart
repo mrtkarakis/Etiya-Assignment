@@ -12,9 +12,9 @@ abstract class _WeatherStoreBase with Store {
   void addWeatherCity(Weather weather) => weatherCities.add(weather);
 
   @action
-  void addAllWeatherCity(List<Weather> weather, {bool clearTo = false}) {
+  void addAllWeatherCity(List<Weather> weatherList, {bool clearTo = false}) {
     if (clearTo) clearWeatherCity();
-    weatherCities.addAll(weather);
+    weatherCities.addAll(weatherList);
   }
 
   @action

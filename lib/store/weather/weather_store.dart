@@ -9,7 +9,10 @@ abstract class _WeatherStoreBase with Store {
   ObservableSet<Weather> weatherCities = <Weather>{}.asObservable();
 
   @action
-  void addWeatherCity(Weather weather) => weatherCities.add(weather);
+  void addWeatherCity(Weather weather, {bool withAddCity = true}) {
+    if (withAddCity) addCity(weather.location?.name?.toLowerCase());
+    weatherCities.add(weather);
+  }
 
   @action
   void addAllWeatherCity(List<Weather> weatherList, {bool clearTo = false}) {
@@ -19,4 +22,18 @@ abstract class _WeatherStoreBase with Store {
 
   @action
   void clearWeatherCity() => weatherCities.clear();
+
+  final Set<String> cities = <String>{};
+
+  @action
+  void addCity(String? city) => city != null ? cities.add(city) : null;
+
+  @action
+  void addAllCity(List<String> citiesList, {bool clearTo = false}) {
+    if (clearTo) clearCity();
+    cities.addAll(citiesList);
+  }
+
+  @action
+  void clearCity() => cities.clear();
 }

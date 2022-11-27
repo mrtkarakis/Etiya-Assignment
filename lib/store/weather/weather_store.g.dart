@@ -29,11 +29,11 @@ mixin _$WeatherStore on _WeatherStoreBase, Store {
       ActionController(name: '_WeatherStoreBase', context: context);
 
   @override
-  void addWeatherCity(Weather weather) {
+  void addWeatherCity(Weather weather, {bool withAddCity = true}) {
     final _$actionInfo = _$_WeatherStoreBaseActionController.startAction(
         name: '_WeatherStoreBase.addWeatherCity');
     try {
-      return super.addWeatherCity(weather);
+      return super.addWeatherCity(weather, withAddCity: withAddCity);
     } finally {
       _$_WeatherStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -56,6 +56,39 @@ mixin _$WeatherStore on _WeatherStoreBase, Store {
         name: '_WeatherStoreBase.clearWeatherCity');
     try {
       return super.clearWeatherCity();
+    } finally {
+      _$_WeatherStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addCity(String? city) {
+    final _$actionInfo = _$_WeatherStoreBaseActionController.startAction(
+        name: '_WeatherStoreBase.addCity');
+    try {
+      return super.addCity(city);
+    } finally {
+      _$_WeatherStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addAllCity(List<String> citiesList, {bool clearTo = false}) {
+    final _$actionInfo = _$_WeatherStoreBaseActionController.startAction(
+        name: '_WeatherStoreBase.addAllCity');
+    try {
+      return super.addAllCity(citiesList, clearTo: clearTo);
+    } finally {
+      _$_WeatherStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void clearCity() {
+    final _$actionInfo = _$_WeatherStoreBaseActionController.startAction(
+        name: '_WeatherStoreBase.clearCity');
+    try {
+      return super.clearCity();
     } finally {
       _$_WeatherStoreBaseActionController.endAction(_$actionInfo);
     }

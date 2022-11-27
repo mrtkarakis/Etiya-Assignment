@@ -2,7 +2,6 @@ import 'package:etiya_assignment/global.dart';
 import 'package:etiya_assignment/localization/text.dart';
 import 'package:etiya_assignment/pages/homePage/home_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     pageController = HomePageController.instance;
-    pageController.startTimer();
+    // pageController.startTimer();
 
     super.initState();
   }
@@ -32,14 +31,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text(AppText.etiyaAssignment)),
-      body: Column(
-        children: [
-          Observer(builder: (_) {
-            return Text(weatherStore.weatherCities.toString());
-          })
-        ],
-      ),
-    );
+        appBar: AppBar(title: const Text(AppText.etiyaAssignment)),
+        body: Column(
+          children: [
+            Center(
+              child: ElevatedButton(
+                onPressed: () async {
+                  await weatherService.getLocalStorageWeather();
+                },
+                child: Text("get Locale"),
+              ),
+            ),
+            Text(weatherStore.weatherCities.toString())
+          ],
+        ));
   }
 }

@@ -3,7 +3,10 @@ import 'package:etiya_assignment/localization/text.dart';
 import 'package:etiya_assignment/pages/homePage/home_view.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  await localStorageService.instancePrefs();
+  await weatherService.getLocalStorageWeather();
+
   runApp(const MyApp());
   citiesService.getCities();
 }

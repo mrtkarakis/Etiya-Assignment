@@ -26,8 +26,8 @@ class DioInterceptor extends Interceptor {
     final data = response.data;
 
     if (data is Map<String, dynamic>) {
-      final BaseModel baseModel = BaseModel.fromJson(data);
-      if (baseModel.request != null) {
+      final BaseModel baseModel = BaseModel.fromJson({"data": data});
+      if (baseModel.data != null) {
         response.data = baseModel;
       }
     }

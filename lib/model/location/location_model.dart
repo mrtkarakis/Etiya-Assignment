@@ -28,4 +28,9 @@ class Location {
   factory Location.fromJson(Map<String, dynamic> json) =>
       _$LocationFromJson(json);
   Map<String, dynamic> toJson() => _$LocationToJson(this);
+
+  @override
+  String toString() {
+    return 'Location(name: $name, country: $country, region: $region, lat: $lat, lon: $lon, timezoneId: $timezoneId, localtime: $localtime, localtimeEpoch: $localtimeEpoch, utcOffset: $utcOffset)';
+  }
 }

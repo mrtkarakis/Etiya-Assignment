@@ -21,25 +21,31 @@ class Current {
   int? visibility;
   String? isDay;
 
-  Current(
-      {this.observationTime,
-      this.temperature,
-      this.weatherCode,
-      this.weatherIcons,
-      this.weatherDescriptions,
-      this.windSpeed,
-      this.windDegree,
-      this.windDir,
-      this.pressure,
-      this.precip,
-      this.humidity,
-      this.cloudcover,
-      this.feelslike,
-      this.uvIndex,
-      this.visibility,
-      this.isDay});
+  Current({
+    this.observationTime,
+    this.temperature,
+    this.weatherCode,
+    this.weatherIcons,
+    this.weatherDescriptions,
+    this.windSpeed,
+    this.windDegree,
+    this.windDir,
+    this.pressure,
+    this.precip,
+    this.humidity,
+    this.cloudcover,
+    this.feelslike,
+    this.uvIndex,
+    this.visibility,
+    this.isDay,
+  });
 
   factory Current.fromJson(Map<String, dynamic> json) =>
       _$CurrentFromJson(json);
   Map<String, dynamic> toJson() => _$CurrentToJson(this);
+
+  @override
+  String toString() {
+    return 'Current(observationTime: $observationTime, temperature: $temperature, weatherCode: $weatherCode, weatherIcons: $weatherIcons, weatherDescriptions: $weatherDescriptions, windSpeed: $windSpeed, windDegree: $windDegree, windDir: $windDir, pressure: $pressure, precip: $precip, humidity: $humidity, cloudcover: $cloudcover, feelslike: $feelslike, uvIndex: $uvIndex, visibility: $visibility, isDay: $isDay)';
+  }
 }

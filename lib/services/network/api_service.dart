@@ -37,7 +37,7 @@ class ApiService {
     );
     BaseModel baseModel = response.data;
     DeveloperService.developerLog(
-      "${baseModel.request}",
+      "${baseModel.data}",
       name: "APIDATA.$servicePath",
     );
     return baseModel;

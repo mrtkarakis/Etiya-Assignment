@@ -1,26 +1,18 @@
 class BaseModel {
-  final Map<String, dynamic>? request;
-  final Map<String, dynamic>? error;
+  final Map<String, dynamic>? data;
   final bool success;
 
   BaseModel({
-    this.request,
-    this.error,
+    this.data,
     this.success = false,
   });
 
   factory BaseModel.fromJson(Map<String, dynamic> map) {
-    final requestData = map["request"];
-    final data = requestData is Map<String, dynamic>
-        ? requestData
-        : {"request": requestData};
-    final errorData = map["error"];
-    final error =
-        errorData is Map<String, dynamic> ? errorData : {"error": errorData};
+    final mapData = map["data"];
+    final data = mapData is Map<String, dynamic> ? mapData : {"data": mapData};
     return BaseModel(
-      request: data,
+      data: data,
       success: map["success"] ?? false,
-      error: error,
     );
   }
 }

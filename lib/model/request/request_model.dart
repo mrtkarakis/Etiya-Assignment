@@ -17,4 +17,8 @@ class Request {
   factory Request.fromJson(Map<String, dynamic> json) =>
       _$RequestFromJson(json);
   Map<String, dynamic> toJson() => _$RequestToJson(this);
+
+  @override
+  String toString() =>
+      'Request(type: $type, query: $query, language: $language)';
 }

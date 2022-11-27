@@ -32,9 +32,16 @@ class WeatherService {
     List<String> cities, {
     bool withAddCity = true,
     bool forceUpdateWeather = false,
+    int? limit,
   }) async {
-    for (String city in cities) {
-      fetchWeather(
+    limit = limit ?? cities.length;
+    DeveloperService.developerLog("call fetchWeatherOfList",
+        name: "WeatherService.fetchWeatherOfList");
+    for (int i = 0; i < limit; i = i + 1) {
+      final String city = cities[i];
+      DeveloperService.developerLog("city: $city",
+          name: "WeatherService.fetchWeatherOfList");
+      await fetchWeather(
         city,
         withAddCity: withAddCity,
         forceUpdateWeather: forceUpdateWeather,

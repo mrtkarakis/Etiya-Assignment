@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:etiya_assignment/global.dart';
 import 'package:etiya_assignment/services/network/interceptor.dart';
 
 class ProjectNetworkManager {
@@ -10,9 +11,7 @@ class ProjectNetworkManager {
     return _instace!;
   }
 
-  static const String _baseUrl = 'http://api.weatherstack.com/';
-
-  static String get getBaseUrl => _baseUrl;
+  static String get getBaseUrl => privateConstant.weatherstackBaseUrl;
   late final Dio dio;
 
   ProjectNetworkManager._init() {

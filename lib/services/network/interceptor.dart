@@ -1,14 +1,13 @@
 import 'package:dio/dio.dart';
+import 'package:etiya_assignment/global.dart';
 import 'package:etiya_assignment/services/developer/developer_service.dart';
 import 'package:etiya_assignment/services/network/model/base_model.dart';
 import 'package:etiya_assignment/services/network/model/interceptor_error.dart';
 
 class DioInterceptor extends Interceptor {
-  static const String _apiKey = "658060d5cd9f9c73fb3638d30f087d08";
-
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.queryParameters["access_key"] = _apiKey;
+    options.queryParameters["access_key"] = privateConstant.weatherstackApiKey;
 
     super.onRequest(options, handler);
   }

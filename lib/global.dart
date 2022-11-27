@@ -1,5 +1,6 @@
 library store.store;
 
+import 'package:etiya_assignment/private/private_constant.dart';
 import 'package:etiya_assignment/services/assets/assets_service.dart';
 import 'package:etiya_assignment/services/cities/cities_service.dart';
 import 'package:etiya_assignment/services/network/api_service.dart';
@@ -8,3 +9,4 @@ import 'package:etiya_assignment/services/network/api_service.dart';
 final ApiService apiService = ApiService.instance;
 final AssetService assetService = AssetService.instance;
 final CitiesService citiesService = CitiesService.instance;
+final PrivateConstant privateConstant = PrivateConstant.instance;

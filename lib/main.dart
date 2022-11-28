@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: AppText.etiyaAssignment,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: const HomePage(),
     );

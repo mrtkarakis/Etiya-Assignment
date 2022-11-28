@@ -8,7 +8,7 @@ abstract class DeviceStoreBase with Store {
   static const Size _initialSize = Size(0, 0);
   Size size = _initialSize;
 
-  void setSize(Size screenSize) {
-    if (size == _initialSize) size = screenSize;
+  void setSize(BuildContext context) {
+    if (size == _initialSize) size = MediaQuery.of(context).size;
   }
 }

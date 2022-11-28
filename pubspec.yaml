@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  intl: ^0.17.0
 
   #stateManagement
   mobx: ^2.1.3

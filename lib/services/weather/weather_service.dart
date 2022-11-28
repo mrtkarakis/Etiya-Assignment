@@ -85,10 +85,14 @@ class WeatherService {
   bool _checkTimeDifference(String city) {
     final int? dataTimeEpoch = weatherStore
         .weatherCities[city.toUpperCase()]?.location?.localtimeEpoch;
-    final int nowTimeEpoch = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-    final int timeDifference =
-        (nowTimeEpoch - (dataTimeEpoch ?? nowTimeEpoch)).abs();
-    final bool isDifference = timeDifference > 10 * 60 * 1000;
+    DateTime nowTime = DateTime.now();
+    nowTime = nowTime.add(nowTime.timeZoneOffset);
+    DateTime dataTime = nowTime;
+    if (dataTimeEpoch != null) {
+      dataTime = DateTime.fromMillisecondsSinceEpoch(dataTimeEpoch * 1000);
+    }
+    final Duration timeDifference = nowTime.difference(dataTime);
+    final bool isDifference = timeDifference.inMinutes > 10;
     return isDifference;
   }
 

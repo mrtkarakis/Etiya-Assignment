@@ -1,4 +1,5 @@
-import 'package:json_annotation/json_annotation.dart' show JsonSerializable;
+import 'package:json_annotation/json_annotation.dart'
+    show JsonKey, JsonSerializable;
 
 part "location_model.g.dart";
 
@@ -9,9 +10,12 @@ class Location {
   String? region;
   String? lat;
   String? lon;
+  @JsonKey(name: 'timezone_id')
   String? timezoneId;
   String? localtime;
+  @JsonKey(name: 'localtime_epoch')
   int? localtimeEpoch;
+  @JsonKey(name: 'utc_offset')
   String? utcOffset;
 
   Location(

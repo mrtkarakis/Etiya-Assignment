@@ -1,22 +1,32 @@
-import 'package:json_annotation/json_annotation.dart' show JsonSerializable;
+import 'package:json_annotation/json_annotation.dart'
+    show JsonKey, JsonSerializable;
 
 part "current_model.g.dart";
 
 @JsonSerializable()
 class Current {
+  @JsonKey(name: 'observation_time')
   String? observationTime;
   int? temperature;
+  @JsonKey(name: 'weather_code')
   int? weatherCode;
+  @JsonKey(name: 'weather_icons')
   List<String>? weatherIcons;
+
+  @JsonKey(name: 'weather_descriptions')
   List<String>? weatherDescriptions;
+  @JsonKey(name: 'wind_speed')
   int? windSpeed;
+  @JsonKey(name: 'wind_degree')
   int? windDegree;
+  @JsonKey(name: 'wind_dir')
   String? windDir;
   int? pressure;
   double? precip;
   int? humidity;
   int? cloudcover;
   int? feelslike;
+  @JsonKey(name: 'uv_index')
   int? uvIndex;
   int? visibility;
   String? isDay;

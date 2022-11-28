@@ -6,18 +6,23 @@ class WeatherStore = _WeatherStoreBase with _$WeatherStore;
 
 abstract class _WeatherStoreBase with Store {
   @observable
-  ObservableSet<Weather> weatherCities = <Weather>{}.asObservable();
+  ObservableMap<String, Weather> weatherCities =
+      <String, Weather>{}.asObservable();
 
   @action
   void addWeatherCity(Weather weather, {bool withAddCity = true}) {
-    if (withAddCity) addCity(weather.location?.name?.toLowerCase());
-    weatherCities.add(weather);
+    if (withAddCity) addCity(weather.location?.name?.toUpperCase());
+    weatherCities
+        .addAll({weather.location?.name?.toUpperCase() ?? "": weather});
   }
 
   @action
-  void addAllWeatherCity(List<Weather> weatherList, {bool clearTo = false}) {
+  void addAllWeatherCities(
+    Map<String, Weather> weatherCities, {
+    bool clearTo = false,
+  }) {
     if (clearTo) clearWeatherCity();
-    weatherCities.addAll(weatherList);
+    weatherCities.addAll(weatherCities);
   }
 
   @action

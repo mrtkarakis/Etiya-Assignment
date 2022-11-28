@@ -13,13 +13,13 @@ mixin _$WeatherStore on _WeatherStoreBase, Store {
       Atom(name: '_WeatherStoreBase.weatherCities', context: context);
 
   @override
-  ObservableSet<Weather> get weatherCities {
+  ObservableMap<String, Weather> get weatherCities {
     _$weatherCitiesAtom.reportRead();
     return super.weatherCities;
   }
 
   @override
-  set weatherCities(ObservableSet<Weather> value) {
+  set weatherCities(ObservableMap<String, Weather> value) {
     _$weatherCitiesAtom.reportWrite(value, super.weatherCities, () {
       super.weatherCities = value;
     });
@@ -40,11 +40,12 @@ mixin _$WeatherStore on _WeatherStoreBase, Store {
   }
 
   @override
-  void addAllWeatherCity(List<Weather> weatherList, {bool clearTo = false}) {
+  void addAllWeatherCities(Map<String, Weather> weatherCities,
+      {bool clearTo = false}) {
     final _$actionInfo = _$_WeatherStoreBaseActionController.startAction(
-        name: '_WeatherStoreBase.addAllWeatherCity');
+        name: '_WeatherStoreBase.addAllWeatherCities');
     try {
-      return super.addAllWeatherCity(weatherList, clearTo: clearTo);
+      return super.addAllWeatherCities(weatherCities, clearTo: clearTo);
     } finally {
       _$_WeatherStoreBaseActionController.endAction(_$actionInfo);
     }

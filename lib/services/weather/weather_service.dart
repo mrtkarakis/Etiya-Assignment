@@ -26,22 +26,23 @@ class WeatherService {
     final localData = await localStorageService.getValue(
       key: LocalStorageKey.weatherCities,
     );
+    if (localData != null) {
+      final jsonData = convert.json.decode(localData);
+      Map<String, dynamic> weatherData = Map<String, dynamic>.from(jsonData);
 
-    final jsonData = convert.json.decode(localData);
-    Map<String, dynamic> weatherData = Map<String, dynamic>.from(jsonData);
+      for (final element in weatherData.values) {
+        Weather weather = Weather.fromJson(element);
 
-    for (final element in weatherData.values) {
-      Weather weather = Weather.fromJson(element);
-
-      _addLocalStorageWeather(weather);
+        _addLocalStorageWeather(weather);
+      }
+      _setLocalDataToStore();
     }
-    _setLocalDataToStore();
   }
 
   void _setLocalDataToStore() {
     for (Weather weather in localStorageWeather.values) {
       final bool hasData =
-          weatherStore.cities.contains(weather.location?.name?.toLowerCase());
+          weatherStore.cities.contains(weather.location?.name?.toUpperCase());
       if (!hasData) {
         weatherStore.addWeatherCity(weather);
       }
@@ -51,8 +52,9 @@ class WeatherService {
   void _setLocalStorage() {
     localStorageService.remove(key: LocalStorageKey.weatherCities);
     localStorageService.setValue(
-        key: LocalStorageKey.weatherCities,
-        value: convert.json.encode(localStorageWeather));
+      key: LocalStorageKey.weatherCities,
+      value: convert.json.encode(localStorageWeather),
+    );
   }
 
   Future<void> fetchWeather(
@@ -60,17 +62,34 @@ class WeatherService {
     bool withAddCity = true,
     bool forceUpdateWeather = false,
   }) async {
-    final bool hasCity = weatherStore.cities.contains(city.toLowerCase());
+    final bool hasCity = weatherStore.cities.contains(city.toUpperCase());
 
-    if (!hasCity || forceUpdateWeather) {
-      final BaseModel baseModel = await apiService.getCurrrentCity(city);
-      final Weather weather = Weather.fromJson(baseModel.data);
-      DeveloperService.developerLog("weather: $weather",
-          name: "WeatherService.fetchWeather");
-      weatherStore.addWeatherCity(weather);
-      _addLocalStorageWeather(weather);
-      _setLocalStorage();
+    bool isDifference = true;
+    if (hasCity) {
+      isDifference = _checkTimeDifference(city);
     }
+    if (!hasCity || forceUpdateWeather || isDifference) {
+      final BaseModel baseModel = await apiService.getCurrrentCity(city);
+      if (baseModel.data?["request"] != null) {
+        final Weather weather = Weather.fromJson(baseModel.data);
+
+        DeveloperService.developerLog("weather: $weather",
+            name: "WeatherService.fetchWeather");
+        weatherStore.addWeatherCity(weather, withAddCity: withAddCity);
+        _addLocalStorageWeather(weather);
+        _setLocalStorage();
+      }
+    }
+  }
+
+  bool _checkTimeDifference(String city) {
+    final int? dataTimeEpoch = weatherStore
+        .weatherCities[city.toUpperCase()]?.location?.localtimeEpoch;
+    final int nowTimeEpoch = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+    final int timeDifference =
+        (nowTimeEpoch - (dataTimeEpoch ?? nowTimeEpoch)).abs();
+    final bool isDifference = timeDifference > 10 * 60 * 1000;
+    return isDifference;
   }
 
   Future<void> fetchWeatherOfList(

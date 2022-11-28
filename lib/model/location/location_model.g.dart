@@ -12,10 +12,10 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
       region: json['region'] as String?,
       lat: json['lat'] as String?,
       lon: json['lon'] as String?,
-      timezoneId: json['timezoneId'] as String?,
+      timezoneId: json['timezone_id'] as String?,
       localtime: json['localtime'] as String?,
-      localtimeEpoch: json['localtimeEpoch'] as int?,
-      utcOffset: json['utcOffset'] as String?,
+      localtimeEpoch: json['localtime_epoch'] as int?,
+      utcOffset: json['utc_offset'] as String?,
     );
 
 Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
@@ -24,8 +24,8 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'region': instance.region,
       'lat': instance.lat,
       'lon': instance.lon,
-      'timezoneId': instance.timezoneId,
+      'timezone_id': instance.timezoneId,
       'localtime': instance.localtime,
-      'localtimeEpoch': instance.localtimeEpoch,
-      'utcOffset': instance.utcOffset,
+      'localtime_epoch': instance.localtimeEpoch,
+      'utc_offset': instance.utcOffset,
     };

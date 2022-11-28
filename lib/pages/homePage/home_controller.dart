@@ -17,8 +17,6 @@ class HomePageController {
   static bool get _checkCitiesIsNotEmpty => citiesService.cities != null;
   static bool _isFetchProcess = false;
   static bool _checkMaxTickIsTrue(int tick) => tick < maxTick;
-  static bool get _checkWeatherListIsEmpty =>
-      weatherStore.weatherCities.isEmpty;
   static async.Future<List<String>?> _fetchCities() =>
       citiesService.getCities();
 
@@ -30,12 +28,11 @@ class HomePageController {
           " timer: ${timer.tick}",
           name: "HomePageController.timer",
         );
-        if ((!_checkMaxTickIsTrue(timer.tick) && !_checkCitiesIsNotEmpty) ||
-            (_checkWeatherListIsEmpty && !_isFetchProcess)) {
+        if (_checkMaxTickIsTrue(timer.tick) && !_isFetchProcess) {
           if (_checkCitiesIsNotEmpty) {
             _isFetchProcess = true;
             final List<String> cities = citiesService.cities!;
-            weatherService.fetchWeatherOfList(cities, limit: 4).then(
+            weatherService.fetchWeatherOfList(cities, limit: 2).then(
                   (_) => _isFetchProcess = false,
                 );
           } else {

@@ -1,6 +1,7 @@
 import 'package:etiya_assignment/global.dart';
 import 'package:etiya_assignment/localization/text.dart';
-import 'package:etiya_assignment/pages/homePage/home_view.dart';
+import 'package:etiya_assignment/router/app_router.dart';
+import 'package:etiya_assignment/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
@@ -14,13 +15,15 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  static final AppRouter _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: AppText.etiyaAssignment,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: const HomePage(),
+      theme: AppTheme.appTheme,
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }

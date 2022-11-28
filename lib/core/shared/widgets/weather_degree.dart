@@ -6,17 +6,25 @@ class WeatherDegree extends StatelessWidget {
   const WeatherDegree({
     super.key,
     required this.weather,
-    this.size = 28,
+    this.size = 22,
   });
   final Weather weather;
   final double size;
   @override
   Widget build(BuildContext context) {
-    final String text =
-        "${weather.current?.temperature} ${AppText.celsiusSymbol}";
+    final String degree = "${weather.current?.temperature}";
+    const String symbol = " ${AppText.celsiusSymbol}";
+    final String text = "$degree$symbol";
+
     return Hero(
-      tag: weather,
-      child: Text(text, style: TextStyle(fontSize: size)),
+      tag: "${weather.location?.name ?? DateTime.now()} degree",
+      child: Material(
+        type: MaterialType.transparency,
+        child: Text(
+          text,
+          style: TextStyle(fontSize: size),
+        ),
+      ),
     );
   }
 }

@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:etiya_assignment/core/shared/constant/app_ui_constant.dart';
 import 'package:etiya_assignment/core/shared/widgets/weather_degree.dart';
 import 'package:etiya_assignment/core/shared/widgets/weather_icon.dart';
 import 'package:etiya_assignment/core/shared/widgets/weather_time.dart';
 import 'package:etiya_assignment/global.dart';
 import 'package:etiya_assignment/model/weather/weather_model.dart';
+import 'package:etiya_assignment/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 class WeatherItem extends StatelessWidget {
@@ -21,7 +23,8 @@ class WeatherItem extends StatelessWidget {
     return SizedBox(
       height: itemHeight,
       child: TextButton(
-        onPressed: () {},
+        onPressed: () =>
+            context.router.push(WeatherDetailRoute(weather: weather)),
         child: Padding(
           padding: UiConstant.horizontalPadding,
           child: Row(

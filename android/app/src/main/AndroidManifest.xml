@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mertkarakis.etiyaassignment.etiya_assignment">
    <application
-        android:label="etiya_assignment"
+        android:label="Etiya Assignment"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

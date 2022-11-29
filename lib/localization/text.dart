@@ -1,4 +1,6 @@
 class AppText {
-  static const etiyaAssignment = "Etiya Assignment";
-  static const celsiusSymbol = "\u00B0";
+  static const String etiyaAssignment = "Etiya Assignment";
+  static const String celsiusSymbol = "\u00B0";
+  static const String search = "Search";
+  static const String getWeatherInfo = "Get Weather Info";
 }

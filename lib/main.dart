@@ -18,12 +18,15 @@ class MyApp extends StatelessWidget {
   static final AppRouter _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: AppText.etiyaAssignment,
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.appTheme,
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: MaterialApp.router(
+        title: AppText.etiyaAssignment,
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.appTheme,
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+      ),
     );
   }
 }

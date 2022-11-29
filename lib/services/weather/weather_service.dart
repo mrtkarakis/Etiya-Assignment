@@ -57,7 +57,7 @@ class WeatherService {
     );
   }
 
-  Future<void> fetchWeather(
+  Future<Weather?> fetchWeather(
     String city, {
     bool withAddCity = true,
     bool forceUpdateWeather = false,
@@ -78,8 +78,11 @@ class WeatherService {
         weatherStore.addWeatherCity(weather, withAddCity: withAddCity);
         _addLocalStorageWeather(weather);
         _setLocalStorage();
+
+        return weather;
       }
     }
+    return null;
   }
 
   bool _checkTimeDifference(String city) {

@@ -7,6 +7,7 @@ import 'package:etiya_assignment/services/network/api_service.dart';
 import 'package:etiya_assignment/services/storage/local_storage_service.dart';
 import 'package:etiya_assignment/services/weather/weather_service.dart';
 import 'package:etiya_assignment/store/device/device_store.dart';
+import 'package:etiya_assignment/store/search/search_store.dart';
 import 'package:etiya_assignment/store/weather/weather_store.dart';
 
 // Service
@@ -20,3 +21,4 @@ final LocalStorageService localStorageService = LocalStorageService.instance;
 // Store
 final WeatherStore weatherStore = WeatherStore();
 final DeviceStore deviceStore = DeviceStore();
+final SearchStore searchStore = SearchStore();

@@ -1,4 +1,4 @@
-# etiya_assignment
+# Etiya Assignment
 
 A new Flutter project.
 
